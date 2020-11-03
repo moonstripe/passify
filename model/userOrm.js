@@ -1,6 +1,6 @@
 const bcrypt = require('bcryptjs');
 const {
-  findAllUsers,
+  // findAllUsers,
   findUserByIdQuery,
   findUserByUsername,
   insertUserQuery,
@@ -25,14 +25,14 @@ const fetchUserByUsernameFromDb = async (username) => {
 };
 
 // Gets
-const fetchUsers = async () => {
-  try {
-    const [rows] = await connection.query(findAllUsers);
-    return rows;
-  } catch (e) {
-    throw new Error(e);
-  }
-};
+// const fetchUsers = async () => {
+//   try {
+//     const [rows] = await connection.query(findAllUsers);
+//     return rows;
+//   } catch (e) {
+//     throw new Error(e);
+//   }
+// };
 
 const fetchUserByIdFromDb = async (userId) => {
   try {
@@ -78,7 +78,7 @@ const deleteUserByIdFromDb = async (userId) => {
 
 module.exports = {
   comparePassword,
-  fetchUsers,
+  // fetchUsers,
   fetchUserByIdFromDb,
   fetchUserByUsernameFromDb,
   insertUserToDb,

@@ -1,8 +1,8 @@
-DROP DATABASE IF EXISTS fwitter_db;
+DROP DATABASE IF EXISTS passify_db;
 
-CREATE DATABASE fwitter_db;
+CREATE DATABASE passify_db;
 
-USE fwitter_db;
+USE passify_db;
 
 CREATE TABLE users (
     id INT AUTO_INCREMENT NOT NULL,
@@ -12,10 +12,10 @@ CREATE TABLE users (
 );
 
 
-CREATE TABLE fweets (
+CREATE TABLE logins (
 	id INT AUTO_INCREMENT NOT NULL,
-    fweet VARCHAR(255) NOT NULL,
+    website VARCHAR(255) NOT NULL,
+    passwords VARCHAR(255) NOT NULL,
     userId INT references users(id),
     PRIMARY KEY (id)
 );
-
