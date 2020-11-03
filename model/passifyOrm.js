@@ -4,7 +4,7 @@ const {
   findLoginByIdQuery,
   findLoginByUserQuery,
   deleteLoginByIdQuery,
-} = require('./fweetQueries');
+} = require('./passifyQueries');
 const connection = require('../config/connection');
 
 
@@ -39,7 +39,7 @@ const findLoginsByUserFromDb = async (userId) => {
 
 const insertLoginToDb = async (website, password, userId) => {
   try {
-    const [ result ] = await connection.query(insertLoginQuery, [website, password, userId ]);
+    const [ result ] = await connection.query(insertLoginQuery, [ website, password, userId ]);
     return await findAllLoginsFromDb(result.insertId);
   } catch (e) {
     throw new Error(e);
