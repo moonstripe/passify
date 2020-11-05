@@ -14,11 +14,10 @@ router.use(authMiddleware);
 
 // /api/logins/userlogins
 router.route('/userlogins')
-  .get(findLoginsByLoggedInUserApi)
+  .get(findLoginsByLoggedInUserApi);
 
 // /api/logins
 router.route('/')
-  .get(findAllLoginsApi)
   .post(insertLoginApi);
 
 

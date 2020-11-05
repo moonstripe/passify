@@ -50,6 +50,7 @@ const jwtStrategy = new JwtStrategy(jwtOptions, async (jwtToken, done) => {
   try {
     user = await fetchUserByIdFromDb(jwtToken.sub);
   } catch (e) {
+    console.log('error', e);
     return done(e, null);
   }
 

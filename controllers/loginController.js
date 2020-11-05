@@ -12,6 +12,7 @@ const {
         const userLogins = await findLoginsByUserFromDb(req.user.id);
         return res.json(userLogins);
       } catch (e) {
+        console.log('ERROR L:15 loginController', e);
         res.status(401).json(e);
       }
     },
@@ -24,6 +25,7 @@ const {
         }
         return res.json(login);
       } catch (e) {
+        console.log('ERROR L:27 loginController', e);
         res.status(401).json(e);
       }
     },
@@ -32,19 +34,23 @@ const {
         const logins = await findAllLoginsFromDb();
         return res.json(logins);
       } catch (e) {
+        console.log('ERROR L:35 loginController', e);
         res.status(401).json(e);
       }
     },
     deleteLoginByIdFromDb: async (req, res) => {
       const { loginId } = req.params;
+      // console.log('PARAMS', req.params);
       try {
-        const loginToDelete = await findLoginsByUserFromDb(loginId);
+        const loginToDelete = await findLoginByIdFromDb(loginId);
+      // console.log('login to del', loginToDelete);
         if (loginToDelete.userId !== req.user.id) {
           return res.status(401).send('You are unauthorized to delete this login');
         }
         const deletedLogin = await deleteLoginByIdFromDb(loginId);
         return res.json(deletedLogin);
       } catch (e) {
+        console.log('ERROR L:48 loginController', e);
         res.status(401).json(e);
       }
     },
@@ -52,11 +58,13 @@ const {
     //  req.user // logged in user
     //  req.body // coming from form
     //  req.params // coming from wildcards declared in routes
-      const { login } = req.body;
+      const { website, username, password } = req.body;
+      console.log(req.user.id);
       try {
-        const createdLogin = await insertLoginToDb(login, req.user.id);
+        const createdLogin = await insertLoginToDb(website, username, password, req.user.id);
         res.json(createdLogin);
       } catch (e) {
+        console.log('ERROR L:61 loginController', e);
         res.status(401).json(e);
       }
     },
