@@ -8,7 +8,7 @@ if (process.env.NODE_ENV === 'production') {
     host: 'localhost',
     user: 'root',
     password: 'password',
-    database: 'fwitter_db',
+    database: 'passify_db',
   }).promise();
 }
 module.exports = connection;
