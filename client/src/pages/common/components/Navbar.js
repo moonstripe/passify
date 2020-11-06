@@ -1,8 +1,6 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Button from '@material-ui/core/Button';
+import React from 'react';;
+import { Button } from 'evergreen-ui';
+import { TabNavigation } from 'evergreen-ui';
 import { Link, useHistory } from 'react-router-dom';
 
 
@@ -22,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ButtonAppBar() {
+export default function ButtonTabNavigation() {
   const classes = useStyles();
   const { token } = useSelector(state => state.viewer);
   const dispatch = useDispatch();
@@ -36,8 +34,8 @@ export default function ButtonAppBar() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
-        <Toolbar>
+      <TabNavigation position="static">
+        
           <Button
             component={Link}
             to='/'
@@ -67,8 +65,8 @@ export default function ButtonAppBar() {
                 </Button>
               </div>
           }
-        </Toolbar>
-      </AppBar>
+        
+      </TabNavigation>
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import React from 'react';
 import { reduxForm, Field } from 'redux-form';
-import { TextFieldInput } from '../../common';
+import { TextAreaInput } from '../../common';
 import { useCreateUser } from '../UserHooks';
 
 export const UserCreateForm = reduxForm({ form: 'userCreateForm' })((props) => {
@@ -10,15 +10,15 @@ export const UserCreateForm = reduxForm({ form: 'userCreateForm' })((props) => {
     <form onSubmit={handleSubmit(handleSaveUser)}>
       <Field
         name='username'
-        component={TextFieldInput}
+        component={TextAreaInput}
       />
       <Field
         name='password'
-        component={TextFieldInput}
+        component={TextAreaInput}
       />
       <Field
         name='anotherState'
-        component={TextFieldInput}
+        component={TextAreaInput}
       />
       <button type='submit'>Create User</button>
     </form>

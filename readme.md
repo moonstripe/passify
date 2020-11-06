@@ -31,3 +31,4 @@ The content of the file should look like the code below.
 JWT_SECRET=asdyuofgayudagdyuadsgar837rgsdada
  DUE DATE ON  NOVEMBER 14
 
+![Passify] (https://github.com/moonstripe11/passify/tree/bell-branch/passify.png?raw=true)
