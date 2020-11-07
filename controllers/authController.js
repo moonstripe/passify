@@ -16,10 +16,10 @@ module.exports = {
     res.json(tokenForUser(req.user.id));
   },
   signUpApi: async (req, res) => {
-    const { username, password } = req.body;
+    const { email, password } = req.body;
     console.log(req.body);
     try {
-      const user = await insertUserToDb(username, password);
+      const user = await insertUserToDb(email, password);
       res.json(tokenForUser(user.id));
     } catch (e) {
       console.log(e);

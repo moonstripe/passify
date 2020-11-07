@@ -5,7 +5,7 @@ const {
     insertLoginToDb,
     deleteLoginByIdFromDb,
   } = require('../model/passifyOrm');
-  
+
   module.exports = {
     findLoginsByLoggedInUserApi: async (req, res) => {
       try {
@@ -59,6 +59,7 @@ const {
     //  req.body // coming from form
     //  req.params // coming from wildcards declared in routes
       const { website, username, password } = req.body;
+      console.log(website);
       console.log(req.user.id);
       try {
         const createdLogin = await insertLoginToDb(website, username, password, req.user.id);

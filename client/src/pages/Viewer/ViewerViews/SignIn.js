@@ -41,14 +41,16 @@ const TextFieldInput = ({ input, meta, label }) => {
 const SignIn = (props) => {
   const { handleSubmit, history } = props;
 
-  console.log(props);
+  // console.log(props);
   const handleSignIn = async (formValues, dispatch) => {
-    console.log(formValues);
+    // console.log(formValues);
     //{ username: 'Your enterereduseRName', password: 'your password' }
     try {
       const res = await axios.post('/auth/signin', formValues);
       localStorage.setItem('token', res.data);
       dispatch(setViewerToken(res.data));
+        // dispatch(getLogin(res.data));
+        const logins = await axios.get('/api/logins', { headers: { authorization: res.data }})
       history.push('/users');
     } catch (e) {
       throw new Error(e);
@@ -58,8 +60,8 @@ const SignIn = (props) => {
   return (
     <form noValidate autoComplete="off">
       <Field
-        name='username'
-        label='username'
+        name='email'
+        label='email'
         component={TextFieldInput}
       />
       <Field

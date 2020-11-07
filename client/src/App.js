@@ -2,21 +2,19 @@ import React from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Navbar from './pages/common/components/Navbar';
+import {WrappedSaveLogin} from "./pages/Login/LoginViews/SaveLogin";
 import Drawer from '@material-ui/core/Drawer';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Toolbar from '@material-ui/core/Toolbar';
-import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
+
 
 import {
     WrappedSignUp,
     WrappedSignIn,
 } from './pages/Viewer';
+import {useSelector} from "react-redux";
+import { LoginListView } from "./pages/Login/LoginViews";
+import {LoginContainer} from "./pages/Login";
 
 const drawerWidth = 240;
 
@@ -47,6 +45,7 @@ const useStyles = makeStyles((theme) => ({
 function App() {
     const classes = useStyles();
 
+
     return (
             <div className={classes.root}>
                 <Router>
@@ -59,33 +58,14 @@ function App() {
                     }}
                 >
                     <Toolbar/>
-                    <div className={classes.drawerContainer}>
-                        <List>
-                            {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                                <ListItem button key={text}>
-                                    <ListItemIcon>{index % 2 === 0 ? <InboxIcon/> : <MailIcon/>}</ListItemIcon>
-                                    <ListItemText primary={text}/>
-                                </ListItem>
-                            ))}
-                        </List>
-                        <Divider/>
-                        <List>
-                            {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                                <ListItem button key={text}>
-                                    <ListItemIcon>{index % 2 === 0 ? <InboxIcon/> : <MailIcon/>}</ListItemIcon>
-                                    <ListItemText primary={text}/>
-                                </ListItem>
-                            ))}
-                        </List>
-                    </div>
+                    <LoginListView className={classes.drawerContainer}/>
                 </Drawer>
                 <main className={classes.content}>
                     <Navbar className={classes.appBar}/>
                     <Route path='/signup' component={WrappedSignUp}/>
                     <Route path='/signin' component={WrappedSignIn}/>
-                    <Route exact path="/">
-                        <h1>Welcome to the about</h1>
-                    </Route>
+                    <Route exact path="/" component={WrappedSaveLogin}/>
+                    <LoginContainer/>
                 </main>
             </Router>
             </div>
