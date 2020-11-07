@@ -1,8 +1,20 @@
 import React from 'react';
-import {useLoginView} from '../LoginHooks';
+import {useLoginView, useFetchLogins} from '../LoginHooks';
 
 export const LoginSingleView = () => {
-  const { selectedLogin } = useLoginView();
+    const {logins} = useFetchLogins();
+    const {selectedLogin} = useLoginView();
 
-  return <h1>selectedLogin</h1>;
+    console.log(selectedLogin?.website);
+
+    return (
+        <div>
+            <h1>{selectedLogin?.website}</h1>
+            <br/>
+            <p>{selectedLogin?.id}</p>
+            <p>{selectedLogin?.username}</p>
+            <p>{selectedLogin?.password}</p>
+        </div>
+
+    );
 };
