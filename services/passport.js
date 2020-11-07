@@ -8,7 +8,8 @@ const { comparePassword, fetchUserByUsernameFromDb, fetchUserByIdFromDb } = requ
 // takes 2 parameters
 // the 1st is an error or an error object
 // the 2nd is the user you found or null if you dont find one
-const localStrategy = new LocalStrategy(async (username, password, done) => {
+const localOptions = { usernameField: 'email' }
+const localStrategy = new LocalStrategy(localOptions, async (username, password, done) => {
 //  Find a user with some given criteria
   //   if an error happened when you tried to find that user
   //   call done like this done(err, null);

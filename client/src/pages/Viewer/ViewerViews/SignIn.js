@@ -60,8 +60,8 @@ const SignIn = (props) => {
   return (
     <form noValidate autoComplete="off">
       <Field
-        name='username'
-        label='username'
+        name='email'
+        label='email'
         component={TextFieldInput}
       />
       <Field

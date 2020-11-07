@@ -2,7 +2,7 @@ const bcrypt = require('bcryptjs');
 const {
   // findAllUsers,
   findUserByIdQuery,
-  findUserByUsername,
+  findUserByEmail,
   insertUserQuery,
   deleteUserByIdQuery,
 } = require('./userQueries');
@@ -15,9 +15,9 @@ const comparePassword = async (candidatePassword, userPassword) => {
 };
 
 // All ORM functions will be called inside of the Controllers
-const fetchUserByUsernameFromDb = async (username) => {
+const fetchUserByEmailFromDb = async (email) => {
   try {
-    const [rows] = await connection.query(findUserByUsername, username);
+    const [rows] = await connection.query(findUserByEmail, email);
     return rows[0];
   } catch (e) {
     throw new Error(e);
@@ -52,12 +52,12 @@ const fetchUserByIdFromDb = async (userId) => {
 };
 
 // Insert
-const insertUserToDb = async (username, password) => {
+const insertUserToDb = async (email, password) => {
   // going to generate some random String to add on to our hashed password once we start hashing it
   const salt = await bcrypt.genSalt(10);
   const hashedPassword = await bcrypt.hash(password, salt);
   try {
-    const [result] = await connection.query(insertUserQuery, [username, hashedPassword]);
+    const [result] = await connection.query(insertUserQuery, [email, hashedPassword]);
     const [userResult] = await connection.query(findUserByIdQuery, result.insertId);
     return userResult[0];
   } catch (e) {
@@ -80,7 +80,7 @@ module.exports = {
   comparePassword,
   // fetchUsers,
   fetchUserByIdFromDb,
-  fetchUserByUsernameFromDb,
+  fetchUserByEmailFromDb,
   insertUserToDb,
   deleteUserByIdFromDb,
 };
