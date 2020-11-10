@@ -14,10 +14,10 @@ export const PassInput = ({ input, meta }) => {
   // console.log(input);
   return <TextField
       {...input}
-      label={input.name}
+      label='confirm'
       onChange={ (e, v) => {
        console.log(e.target.value);
-       const currentVal = e.target.value;
+       const currentVal = e.target.value.length;
        input.onChange(currentVal)
       }}
       // label={label}
