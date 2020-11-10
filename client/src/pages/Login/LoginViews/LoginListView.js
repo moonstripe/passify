@@ -34,6 +34,9 @@ export const LoginListView = () => {
                     );
                 })
             }
+            <ListItem key={logins?.length+1} component={Link} to={`/`}>
+                <ListItemText primary="Add an Account"/>
+            </ListItem>
         </List>
     );
 };

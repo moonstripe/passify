@@ -31,21 +31,19 @@ export const useFetchLogins = () => {
 
 
 export const useLoginView = () => {
-  const {
-    dispatch,
-  } = useUtils();
+  const dispatch = useDispatch();
 
   const params = useParams();
   console.log(params);
   const { selectedLogin } = useSelector(state => state.login);
   useEffect(() => {
-    axios.get(`/api/logins/${params.userId}`, { headers: { authorization: localStorage.getItem('token') }})
+    axios.get(`/api/logins/${params.loginId}`, { headers: { authorization: localStorage.getItem('token') }})
       .then(res => {
         dispatch(getLogin(res.data));
       })
       .catch(e => console.log(e));
 
-  }, [dispatch, params.userId]);
+  }, [dispatch, params.loginId]);
 
   return {
     selectedLogin,
