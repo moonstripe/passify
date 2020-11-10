@@ -68,8 +68,8 @@ function App() {
                     <Route path='/signin' component={WrappedSignIn}/>
                     <Route exact path="/" component={WrappedSaveLogin}/>
                     <LoginContainer/>
+                    <StickyFooter/>
                 </main>
-                <StickyFooter/>
             </Router>
             </div>
     );

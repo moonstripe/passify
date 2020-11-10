@@ -9,3 +9,17 @@ export const TextFieldInput = ({ input, meta }) => {
     variant="filled"
   />;
 };
+
+export const PassInput = ({ input, meta }) => {
+  // console.log(input);
+  return <TextField
+      {...input}
+      onChange={ (e, v) => {
+       console.log(e.target.value);
+       const currentVal = e.target.value;
+       input.onChange(currentVal)
+      }}
+      // label={label}
+      variant="filled"
+  />;
+};
