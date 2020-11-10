@@ -1,4 +1,4 @@
-const insertLoginQuery = 'INSERT INTO logins (website, username, password, userId) VALUES (?, ?, ?, ?);';
+const insertLoginQuery = 'INSERT INTO logins (website, username, passwordStrength, password, userId) VALUES (?, ?, ?, ?, ?);';
 const findAllLoginsQuery = 'SELECT * FROM logins;';
 const findLoginByIdQuery = 'SELECT * FROM logins WHERE id = ?;';
 const findLoginByUserQuery = 'SELECT * FROM logins WHERE userId = ?;';
