@@ -71,8 +71,8 @@ const SaveLoginForm = (props) => {
                 component={TextFieldInput}
             />
             <Field
-                name='passwordStrength'
-                label='passwordStrength'
+                name='confirm'
+                label='passwordconfirmation'
                 component={PassInput}
             />
             <Button

@@ -58,11 +58,11 @@ const {
     //  req.user // logged in user
     //  req.body // coming from form
     //  req.params // coming from wildcards declared in routes
-      const { website, username, password } = req.body;
+      const { website, username, passwordStrength, password } = req.body;
       console.log(website);
       console.log(req.user.id);
       try {
-        const createdLogin = await insertLoginToDb(website, username, password, req.user.id);
+        const createdLogin = await insertLoginToDb(website, username, passwordStrength, password, req.user.id);
         res.json(createdLogin);
       } catch (e) {
         console.log('ERROR L:61 loginController', e);

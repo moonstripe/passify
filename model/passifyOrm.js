@@ -37,9 +37,9 @@ const findLoginsByUserFromDb = async (userId) => {
 };
 
 
-const insertLoginToDb = async (website, username, password, userId) => {
+const insertLoginToDb = async (website, username, passwordStrength, password, userId) => {
   try {
-    const [ result ] = await connection.query(insertLoginQuery, [ website, username, password, userId ]);
+    const [ result ] = await connection.query(insertLoginQuery, [ website, username, passwordStrength, password, userId ]);
     // console.log('result', result);
     return await findAllLoginsFromDb(result.insertId);
   } catch (e) {
