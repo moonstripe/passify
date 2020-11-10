@@ -11,9 +11,8 @@ export const LoginSingleView = () => {
         <div>
             <h1>{selectedLogin?.website}</h1>
             <br/>
-            <p>{selectedLogin?.id}</p>
+            <p>{selectedLogin?.passwordStrength}</p>
             <p>{selectedLogin?.username}</p>
-            <p>{selectedLogin?.password}</p>
         </div>
 
     );
