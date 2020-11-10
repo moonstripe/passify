@@ -1,3 +1,4 @@
+const bcrypt = require('bcryptjs');
 const {
   insertLoginQuery,
   findAllLoginsQuery,
@@ -39,7 +40,9 @@ const findLoginsByUserFromDb = async (userId) => {
 
 const insertLoginToDb = async (website, username, passwordStrength, password, userId) => {
   try {
-    const [ result ] = await connection.query(insertLoginQuery, [ website, username, passwordStrength, password, userId ]);
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
+    const [ result ] = await connection.query(insertLoginQuery, [ website, username, passwordStrength, hashedPassword, userId ]);
     // console.log('result', result);
     return await findAllLoginsFromDb(result.insertId);
   } catch (e) {
