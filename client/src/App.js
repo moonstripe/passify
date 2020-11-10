@@ -1,6 +1,7 @@
 import React from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
+import StickyFooter from './pages/common/components/Footer';
 import Navbar from './pages/common/components/Navbar';
 import {WrappedSaveLogin} from "./pages/Login/LoginViews/SaveLogin";
 import Drawer from '@material-ui/core/Drawer';
@@ -43,6 +44,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 function App() {
+
     const classes = useStyles();
 
 
@@ -67,6 +69,7 @@ function App() {
                     <Route exact path="/" component={WrappedSaveLogin}/>
                     <LoginContainer/>
                 </main>
+                <StickyFooter/>
             </Router>
             </div>
     );
