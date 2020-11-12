@@ -22,10 +22,21 @@ const useStyles = makeStyles((theme) => ({
 const SaveLoginForm = (props) => {
     const { handleSubmit, history } = props;
     const viewer = useSelector(state => state.viewer);
+    const strength = useSelector(state => {
+        console.log(state.login.strength);
+
+        return state.login.strength;
+    });
 
     console.log(viewer.token);
     const handleSave = async (formValues, dispatch) => {
-        // console.log(formValues);
+        console.log('formValues:', formValues);
+
+        const newValues = {
+            ...formValues,
+            passwordStrength: strength
+        }
+
         const res = await axios.get('/api/logins', {
             headers: {
                 'authorization': localStorage.getItem('token')
@@ -41,7 +52,7 @@ const SaveLoginForm = (props) => {
 
             // console.log(req.user);
             // console.log(userId[0].userId);
-            const res = await axios.post('/api/logins', formValues, {
+            const res = await axios.post('/api/logins', newValues, {
                 headers: {
                     'authorization': localStorage.getItem('token')
                 }});
@@ -68,11 +79,6 @@ const SaveLoginForm = (props) => {
             <Field
                 name='password'
                 label='password'
-                component={TextFieldInput}
-            />
-            <Field
-                name='passwordStrength'
-                label='confirm'
                 component={PassInput}
             />
             <Button
