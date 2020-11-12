@@ -6,8 +6,8 @@ import Button from '@material-ui/core/Button';
 import { Link, useHistory } from 'react-router-dom';
 
 
-import {useSelector, useDispatch} from 'react-redux';
-import {setViewerToken} from '../../Viewer';
+import { useSelector, useDispatch } from 'react-redux';
+import { setViewerToken } from '../../Viewer';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,6 +25,11 @@ const useStyles = makeStyles((theme) => ({
 export default function ButtonAppBar() {
   const classes = useStyles();
   const { token } = useSelector(state => state.viewer);
+  const strength = useSelector(state => {
+    console.log(state.login.strength);
+
+    return state.login.strength;
+  });
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -36,6 +41,9 @@ export default function ButtonAppBar() {
 
   return (
     <div className={classes.root}>
+      <p>
+        {strength ? strength : 'null'}
+      </p>
       <AppBar position="static">
         <Toolbar>
           <Button
@@ -44,6 +52,7 @@ export default function ButtonAppBar() {
             color="inherit">
             About
           </Button>
+
           {
             token ?
               <Button
