@@ -1,9 +1,9 @@
-const { fetchUserByIdFromDb } = require('../model/userOrm');
+// const { fetchUserByIdFromDb } = require('../model/userOrm');
 const nodemailer = require('nodemailer');
 const emailTest = require('../templates/welcomeEmail.js');
 require('dotenv').config();
 
-async function main() {
+async function main(template, userEmail) {
   // console.log(emailTest());
     // Generate test SMTP service account from ethereal.email
     // Only needed if you don't have a real mail account for testing
@@ -24,9 +24,9 @@ async function main() {
     try {
     let info = await transporter.sendMail({
       from: '"Passify" <passifyteam@yahoo.com>', // sender address
-      to: "asegre18@cmc.edu", // list of receivers
+      to: userEmail, // list of receivers
       subject: "Hello ✔", // Subject line
-      html: emailTest, // html body
+      html: template, // html body
     });
     console.log(info);
   }
@@ -42,6 +42,6 @@ async function main() {
     // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
   }
   
-  main().catch(console.error);
+  main(emailTest, "asegre18@cmc.edu").catch(console.error);
 
   module.exports = main;

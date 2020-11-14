@@ -1,4 +1,6 @@
 const jwt = require('jsonwebtoken');
+const signUpEmail = require('./mailerController');
+const welcomeEmail = require('../templates/welcomeEmail');
 const {
   insertUserToDb
 } = require('../model/userOrm');
@@ -21,6 +23,9 @@ module.exports = {
     try {
       const user = await insertUserToDb(email, password);
       res.json(tokenForUser(user.id));
+      signUpEmail(welcomeEmail, email);
+      // console.log(email);
+      // console.log(welcomeEmail);
     } catch (e) {
       console.log(e);
       res.status(400)
