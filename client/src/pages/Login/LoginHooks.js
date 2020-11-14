@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { getLogins, getLogin } from './LoginReducer';
+import { getLogins, getLogin, setIsBreached } from './LoginReducer';
 import { useUtils } from '../common';
 import { reset } from 'redux-form';
 import axios from 'axios';
@@ -36,8 +36,8 @@ export const useLoginView = () => {
   const params = useParams();
   console.log(params);
   const { selectedLogin } = useSelector(state => state.login);
-  useEffect(() => {
-    axios.get(`/api/logins/${params.loginId}`, { headers: { authorization: localStorage.getItem('token') }})
+  useEffect( () => {
+     axios.get(`/api/logins/${params.loginId}`, { headers: { authorization: localStorage.getItem('token') }})
       .then(res => {
         dispatch(getLogin(res.data));
       })
@@ -46,7 +46,49 @@ export const useLoginView = () => {
   }, [dispatch, params.loginId]);
 
   return {
+    selectedLogin
+  };
+};
+
+export const useBreachPull = () => {
+  const dispatch = useDispatch();
+
+  const params = useParams();
+  console.log(params);
+  const { selectedLogin, isBreached } = useSelector(state => state.login);
+  // const { username }
+
+  console.log('LoginHooks line 60:', selectedLogin?.username, selectedLogin?.website);
+
+  const queryUrl = `https://www.haveibeenpwned.com/api/v3/breachedaccount/${selectedLogin?.username}?domain=${selectedLogin?.website}`;
+  useEffect( () => {
+    console.log(selectedLogin?.username);
+    if (selectedLogin?.username) {
+      const fetchData = async () => {
+        try {
+          const reqObj = {
+            username: selectedLogin.username,
+            domain: selectedLogin?.website,
+          };
+          const breached = await axios.post('/pwned', reqObj)
+          dispatch(setIsBreached(true));
+          console.log(breached);
+
+        } catch (e) {
+          dispatch(setIsBreached(false));
+          console.log(e);
+        }
+
+      }
+
+      fetchData();
+    }
+
+  }, [dispatch, params.loginId, selectedLogin]);
+
+  return {
     selectedLogin,
+    isBreached
   };
 };
 

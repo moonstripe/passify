@@ -5,7 +5,8 @@ const entropizer = new Entropizer();
 const INITIAL_STATE = {
     logins: [],
     selectedLogin: null,
-    strength: 0
+    strength: 0,
+    isBreached: false
 };
 
 const loginSlice = createSlice({
@@ -24,6 +25,11 @@ const loginSlice = createSlice({
             ...state,
             strength: Math.floor(entropizer.evaluate(action.payload.password)),
 
+        }),
+        setIsBreached: (state, action) => ({
+            ...state,
+            isBreached: action.payload,
+
         })
     },
 });
@@ -31,7 +37,8 @@ const loginSlice = createSlice({
 export const {
     getLogins,
     getLogin,
-    computeStrength
+    computeStrength,
+    setIsBreached
 } = loginSlice.actions;
 
 export const loginReducer = loginSlice.reducer;
