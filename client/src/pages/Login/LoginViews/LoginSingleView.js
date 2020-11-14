@@ -1,11 +1,14 @@
 import React from 'react';
-import {useLoginView, useFetchLogins} from '../LoginHooks';
+import {useLoginView, useFetchLogins, useBreachPull } from '../LoginHooks';
 
 export const LoginSingleView = () => {
     const {logins} = useFetchLogins();
     const {selectedLogin} = useLoginView();
+    const { isBreached } = useBreachPull();
 
-    console.log(selectedLogin?.website);
+
+
+    console.log('breached', isBreached);
 
     return (
         <div>
