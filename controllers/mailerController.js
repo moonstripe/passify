@@ -25,7 +25,7 @@ async function main(template, userEmail) {
     let info = await transporter.sendMail({
       from: '"Passify" <passifyteam@yahoo.com>', // sender address
       to: userEmail, // list of receivers
-      subject: "Hello ✔", // Subject line
+      subject: "Welcome to the Passify Family", // Subject line
       html: template, // html body
     });
     console.log(info);
@@ -42,6 +42,6 @@ async function main(template, userEmail) {
     // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
   }
   
-  main(emailTest, "asegre18@cmc.edu").catch(console.error);
+  // main(emailTest, userEmail).catch(console.error);
 
   module.exports = main;
