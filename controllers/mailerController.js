@@ -42,6 +42,7 @@ async function main(template, userEmail) {
     // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
   }
   
-  // main(emailTest, userEmail).catch(console.error);
+  // used for testing welcome email:
+  // main(emailTest, 'asegre18@cmc.edu').catch(console.error);
 
   module.exports = main;
