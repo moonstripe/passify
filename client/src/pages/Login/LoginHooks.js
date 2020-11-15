@@ -52,7 +52,6 @@ export const useLoginView = () => {
 
 export const useBreachPull = () => {
   const dispatch = useDispatch();
-
   const params = useParams();
   console.log(params);
   const { selectedLogin, isBreached } = useSelector(state => state.login);
@@ -60,8 +59,8 @@ export const useBreachPull = () => {
 
   console.log('LoginHooks line 60:', selectedLogin?.username, selectedLogin?.website);
 
-  const queryUrl = `https://www.haveibeenpwned.com/api/v3/breachedaccount/${selectedLogin?.username}?domain=${selectedLogin?.website}`;
   useEffect( () => {
+
     console.log(selectedLogin?.username);
     if (selectedLogin?.username) {
       const fetchData = async () => {
@@ -70,10 +69,9 @@ export const useBreachPull = () => {
             username: selectedLogin.username,
             domain: selectedLogin?.website,
           };
-          const breached = await axios.post('/pwned', reqObj)
+          const breached = await axios.post('/pwned', reqObj);
           dispatch(setIsBreached(true));
-          console.log(breached);
-
+          console.log('hooks line 74, breached', breached);
         } catch (e) {
           dispatch(setIsBreached(false));
           console.log(e);
@@ -84,7 +82,7 @@ export const useBreachPull = () => {
       fetchData();
     }
 
-  }, [dispatch, params.loginId, selectedLogin]);
+  }, [dispatch, selectedLogin]);
 
   return {
     selectedLogin,
