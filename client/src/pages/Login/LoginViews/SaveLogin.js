@@ -7,7 +7,8 @@ import {Link, useHistory} from 'react-router-dom';
 import {useSelector, useDispatch, getState} from 'react-redux';
 import {setViewerToken, getViewerToken} from '../../Viewer';
 import TextField from "@material-ui/core/TextField";
-import {TextFieldInput, PassInput} from "../../common/components/TextFieldInput";
+import {TextFieldInput, WebInput, PassInput} from "../../common/components/TextFieldInput";
+import Input from '@material-ui/core/Input';
 import { reduxForm, Field } from 'redux-form';
 import axios from "axios";
 
@@ -69,7 +70,8 @@ const SaveLoginForm = (props) => {
             <Field
                 name='website'
                 label='website'
-                component={TextFieldInput}
+                component={WebInput}
+                type='url'
             />
             <Field
                 name='username'
