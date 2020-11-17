@@ -25,11 +25,6 @@ const useStyles = makeStyles((theme) => ({
 export default function ButtonAppBar() {
   const classes = useStyles();
   const { token } = useSelector(state => state.viewer);
-  const strength = useSelector(state => {
-    console.log(state.login.strength);
-
-    return state.login.strength;
-  });
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -41,16 +36,13 @@ export default function ButtonAppBar() {
 
   return (
     <div className={classes.root}>
-      <p>
-        {strength ? strength : 'null'}
-      </p>
       <AppBar position="static">
         <Toolbar>
           <Button
             component={Link}
             to='/'
             color="inherit">
-            About
+            Test an Account
           </Button>
 
           {
