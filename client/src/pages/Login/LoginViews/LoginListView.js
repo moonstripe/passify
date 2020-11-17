@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button} from '@material-ui/core';
+import LockIcon from '@material-ui/icons/Lock';
 import {Link} from 'react-router-dom';
 import {useFetchLogins} from '../LoginHooks';
 
@@ -14,6 +14,9 @@ const useStyles = makeStyles((theme) => ({
         maxWidth: 360,
         backgroundColor: theme.palette.background.paper,
     },
+    marginL: {
+        marginLeft: theme.spacing(1),
+    }
 }));
 
 
@@ -29,7 +32,8 @@ export const LoginListView = () => {
             {logins?.map(login => {
                     return (
                         <ListItem key={login.id} component={Link} to={`/logins/${login.id}`}>
-                            <ListItemText primary={login.website}/>
+                            <LockIcon style={{color: `hsl(${login.passwordStrength>149 ? 150 : login.passwordStrength}, 100%, 50%)`}}/>
+                            <ListItemText className={classes.marginL} primary={login.website} secondary={login.username}/>
                         </ListItem>
                     );
                 })
