@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import TextField from '@material-ui/core/TextField';
+import {TextField} from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 import { computeStrength } from '../../Login/LoginReducer';
 
@@ -9,6 +9,16 @@ export const TextFieldInput = ({ input, meta }) => {
     {...input}
     label={input.name}
     variant="filled"
+  />;
+};
+
+export const WebInput = ({ input, meta }) => {
+  // console.log(input);
+  return <TextField
+    {...input}
+    label={input.name}
+    variant="filled"
+    type="url"
   />;
 };
 
@@ -30,9 +40,10 @@ export const PassInput = ({ input, meta }) => {
   return <TextField
       {...input}
       value={password}
-      label='confirm'
+      label='password'
       onChange={ changeHandler}
       // label={label}
       variant="filled"
+      type="password"
   />;
 };
