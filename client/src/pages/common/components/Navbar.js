@@ -20,16 +20,15 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
   },
+  appBar: {
+    backgroundColor: '#7269EF'
+  }
 }));
 
 export default function ButtonAppBar() {
   const classes = useStyles();
   const { token } = useSelector(state => state.viewer);
-  const strength = useSelector(state => {
-    console.log(state.login.strength);
 
-    return state.login.strength;
-  });
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -41,16 +40,13 @@ export default function ButtonAppBar() {
 
   return (
     <div className={classes.root}>
-      <p>
-        {strength ? strength : 'null'}
-      </p>
-      <AppBar position="static">
+      <AppBar className={classes.appBar} position="static">
         <Toolbar>
           <Button
             component={Link}
             to='/'
             color="inherit">
-            About
+            Passify your Account
           </Button>
 
           {

@@ -50,8 +50,10 @@ function App() {
 
     return (
             <div className={classes.root}>
-                <Router>
                 <CssBaseline/>
+                <Router>
+
+                {/*supposed to go here*/}
                 <Drawer
                     className={classes.drawer}
                     variant="permanent"
