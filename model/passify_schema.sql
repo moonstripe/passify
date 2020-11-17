@@ -21,3 +21,4 @@ CREATE TABLE logins (
     userId INT references users(id),
     PRIMARY KEY (id)
 );
+
