@@ -2,7 +2,7 @@ import React from 'react';
 import LockIcon from '@material-ui/icons/Lock';
 import {Link} from 'react-router-dom';
 import {useFetchLogins} from '../LoginHooks';
-
+import LockIcon from '@material-ui/icons/Lock';
 import {makeStyles} from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -30,8 +30,13 @@ export const LoginListView = () => {
     return (
         <List component="nav" className={classes.root} aria-label="contacts">
             {logins?.map(login => {
+                    console.log(login.passwordStrength);
                     return (
+
+
+
                         <ListItem key={login.id} component={Link} to={`/logins/${login.id}`}>
+
                             <LockIcon style={{color: `hsl(${login.passwordStrength>149 ? 150 : login.passwordStrength}, 100%, 50%)`}}/>
                             <ListItemText className={classes.marginL} primary={login.website} secondary={login.username}/>
                         </ListItem>
