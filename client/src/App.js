@@ -14,7 +14,7 @@ import {
     WrappedSignIn,
 } from './pages/Viewer';
 import {useSelector} from "react-redux";
-import { LoginListView } from "./pages/Login/LoginViews";
+import {LoginListView} from "./pages/Login/LoginViews";
 import {LoginContainer} from "./pages/Login";
 
 const drawerWidth = 240;
@@ -49,9 +49,10 @@ function App() {
 
 
     return (
-            <div className={classes.root}>
-                <Router>
-                <CssBaseline/>
+        <div className={classes.root}>
+<CssBaseline/>
+
+            <Router>
                 <Drawer
                     className={classes.drawer}
                     variant="permanent"
@@ -59,7 +60,6 @@ function App() {
                         paper: classes.drawerPaper,
                     }}
                 >
-                    <Toolbar/>
                     <LoginListView className={classes.drawerContainer}/>
                 </Drawer>
                 <main className={classes.content}>
@@ -71,7 +71,7 @@ function App() {
                     <StickyFooter/>
                 </main>
             </Router>
-            </div>
+        </div>
     );
 }
 

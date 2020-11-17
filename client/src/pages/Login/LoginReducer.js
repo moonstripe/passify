@@ -24,12 +24,10 @@ const loginSlice = createSlice({
         computeStrength: (state, action) => ({
             ...state,
             strength: Math.floor(entropizer.evaluate(action.payload.password)),
-
         }),
         setIsBreached: (state, action) => ({
             ...state,
             isBreached: action.payload,
-
         })
     },
 });
