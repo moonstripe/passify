@@ -20,5 +20,5 @@ CREATE TABLE logins (
     password VARCHAR(255) NOT NULL,
     userId INT references users(id),
     PRIMARY KEY (id)
-);
+)
 
