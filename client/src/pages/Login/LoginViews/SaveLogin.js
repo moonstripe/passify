@@ -13,6 +13,31 @@ import { reduxForm, Field } from 'redux-form';
 import axios from "axios";
 import Chip from '@material-ui/core/Chip';
 import Autocomplete from '@material-ui/lab/Autocomplete';
+import { createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
+ const theme = createMuiTheme({
+  palette: {
+    primary: {
+      // light: will be calculated from palette.primary.main,
+      main: '#7269EF',
+      dark: '#464194',
+      // contrastText: will be calculated to contrast with palette.primary.main
+    },
+    secondary: {
+      light: '#3FF3CB',
+      main: '#06D6A0',
+     // dark: will be calculated from palette.secondary.main, 
+      contrastText: '#7269EF',
+    },
+    // Used by `getContrastText()` to maximize the contrast between
+    // the background and the text.
+    contrastThreshold: 3,
+    // Used by the functions below to shift a color's luminance by approximately
+    // two indexes within its tonal palette.
+    // E.g., shift from Red 500 to Red 300 or Red 700.
+    tonalOffset: 0.9,
+  },
+});
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -20,6 +45,10 @@ const useStyles = makeStyles((theme) => ({
             margin: theme.spacing(1),
             width: 200,
         },
+    button: {
+        backgroundColor: '#06D6A0',
+        color: '#7269EF',
+    }
     },
 }));
 const SaveLoginForm = (props) => {
@@ -100,12 +129,16 @@ const SaveLoginForm = (props) => {
                 label='password'
                 component={PassInput}
             />
+            <createMuiTheme theme={theme}>
             <Button
                 onClick={ handleSubmit(handleSave) }
                 variant="contained"
-                color="primary">
+                color="primary"
+                status="success"
+                className={classes.button}>
                 Save Credentials
             </Button>
+            </createMuiTheme>
         </form>
     );
 }
