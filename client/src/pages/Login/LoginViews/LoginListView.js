@@ -2,7 +2,7 @@ import React from 'react';
 import LockIcon from '@material-ui/icons/Lock';
 import {Link} from 'react-router-dom';
 import {useFetchLogins} from '../LoginHooks';
-import LockIcon from '@material-ui/icons/Lock';
+
 import {makeStyles} from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
