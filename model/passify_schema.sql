@@ -1,8 +1,8 @@
-DROP DATABASE IF EXISTS passify_db;
+DROP DATABASE IF EXISTS heroku_15f4e973efa4e84;
 
-CREATE DATABASE passify_db;
+CREATE DATABASE heroku_15f4e973efa4e84;
 
-USE passify_db;
+USE heroku_15f4e973efa4e84;
 
 CREATE TABLE users (
     id INT AUTO_INCREMENT NOT NULL,
