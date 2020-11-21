@@ -1,6 +1,4 @@
-DROP DATABASE IF EXISTS heroku_15f4e973efa4e84;
 
-CREATE DATABASE heroku_15f4e973efa4e84;
 
 USE heroku_15f4e973efa4e84;
 
