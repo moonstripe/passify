@@ -1,7 +1,3 @@
-
-
-USE heroku_15f4e973efa4e84;
-
 CREATE TABLE users (
     id INT AUTO_INCREMENT NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE,
@@ -18,5 +14,5 @@ CREATE TABLE logins (
     password VARCHAR(255) NOT NULL,
     userId INT references users(id),
     PRIMARY KEY (id)
-)
+);
 
