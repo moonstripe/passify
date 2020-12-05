@@ -26,7 +26,7 @@ import { ThemeProvider } from '@material-ui/styles';
     secondary: {
       light: '#3FF3CB',
       main: '#06D6A0',
-     // dark: will be calculated from palette.secondary.main, 
+     // dark: will be calculated from palette.secondary.main,
       contrastText: '#7269EF',
     },
     // Used by `getContrastText()` to maximize the contrast between
@@ -109,6 +109,7 @@ const SaveLoginForm = (props) => {
             <Chip
               variant="outlined"
               label={option.Website}
+              value={option.Website}
               size="small"
               {...getTagProps({ index })}
             />
@@ -118,7 +119,7 @@ const SaveLoginForm = (props) => {
           <TextField {...params} variant="filled" label="Select a Site" placeholder="Website" />
         )}
       />
-            
+
             <Field
                 name='username'
                 label='username'
