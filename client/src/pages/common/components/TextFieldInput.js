@@ -16,7 +16,7 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
     secondary: {
       light: '#3FF3CB',
       main: '#06D6A0',
-     // dark: will be calculated from palette.secondary.main, 
+     // dark: will be calculated from palette.secondary.main,
       contrastText: '#7269EF',
     },
     // Used by `getContrastText()` to maximize the contrast between
@@ -40,12 +40,12 @@ export const TextFieldInput = ({ input, meta }) => {
 export const WebInput = ({ option, Website }) => {
   // console.log(input);
   return  <Autocomplete
-        id="size-small-filled"
-        size="small"
-        options={Websites}
-        getOptionLabel={(option) => option.Website}
-        defaultData={Websites['www.facebook.com']}
-        renderTags={(data, getTagProps) =>
+      id="size-small-filled"
+      size="small"
+      options={Websites}
+      getOptionLabel={(option) => option.Website}
+      defaultData={Websites['www.facebook.com']}
+      renderTags={(data, getTagProps) =>
           data.map((option, index) => (
             <Chip
               variant="outlined"
@@ -56,7 +56,7 @@ export const WebInput = ({ option, Website }) => {
           ))
         }
         renderInput={(params) => (
-          <TextField {...params} variant="filled" label="Select a Site" placeholder="Website" />
+          <TextField {...params} variant="filled" value={Website} label="Select a Site" placeholder="Website" />
         )}
       />;
 };
