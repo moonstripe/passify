@@ -37,30 +37,6 @@ export const TextFieldInput = ({ input, meta }) => {
   />;
 };
 
-export const WebInput = ({ option, Website }) => {
-  // console.log(input);
-  return  <Autocomplete
-      id="size-small-filled"
-      size="small"
-      options={Websites}
-      getOptionLabel={(option) => option.Website}
-      defaultData={Websites['www.facebook.com']}
-      renderTags={(data, getTagProps) =>
-          data.map((option, index) => (
-            <Chip
-              variant="outlined"
-              label={option.Website}
-              size="small"
-              {...getTagProps({ index })}
-            />
-          ))
-        }
-        renderInput={(params) => (
-          <TextField {...params} variant="filled" value={Website} label="Select a Site" placeholder="Website" />
-        )}
-      />;
-};
-
 export const PassInput = ({ input, meta }) => {
   // console.log(input);
 
