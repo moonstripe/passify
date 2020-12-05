@@ -64,6 +64,7 @@ const {
       try {
         const createdLogin = await insertLoginToDb(website, username, passwordStrength, password, req.user.id);
         res.json(createdLogin);
+        console.log(website);
       } catch (e) {
         console.log('ERROR L:61 loginController', e);
         res.status(401).json(e);
