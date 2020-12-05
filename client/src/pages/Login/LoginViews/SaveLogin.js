@@ -98,28 +98,12 @@ const SaveLoginForm = (props) => {
     const classes = useStyles();
     return (
         <form className={classes.root} Validate autoComplete="on">
-            <Autocomplete
-        id="size-small-filled"
-        size="small"
-        options={Websites}
-        getOptionLabel={(option) => option.Website}
-        defaultData={Websites['www.facebook.com']}
-        renderTags={(data, getTagProps) =>
-          data.map((option, index) => (
-            <Chip
-              variant="outlined"
-              label={option.Website}
-              value={option.Website}
-              size="small"
-              {...getTagProps({ index })}
-            />
-          ))
-        }
-        renderInput={(input) => (
-          <TextField {...input} variant="filled" label="Select a Site" name="website" />
-        )}
-      />
 
+            <Field
+                name='website'
+                label='website'
+                component={TextFieldInput}
+            />
             <Field
                 name='username'
                 label='username'
