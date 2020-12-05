@@ -1,3 +1,5 @@
+USE ifcoyyh68a55q76h;
+
 CREATE TABLE users (
     id INT AUTO_INCREMENT NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE,
