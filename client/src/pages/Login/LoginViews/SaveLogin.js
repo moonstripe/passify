@@ -115,8 +115,8 @@ const SaveLoginForm = (props) => {
             />
           ))
         }
-        renderInput={(params) => (
-          <TextField {...params} variant="filled" label="Select a Site" placeholder="Website" />
+        renderInput={(input) => (
+          <TextField {...input} variant="filled" label="Select a Site" placeholder="Website" />
         )}
       />
 
