@@ -1,33 +1,5 @@
-Step 1 Clone this repo somewhere in your machine
-Step 2 is cd into this repo, and then run 
-MAC rm -rf .git
-Windows Powershell rm -force .git
+An App desinged to keep our users accounts secure. Using the getpwned API, we analyze our users account info to ensure their passwords are secure using an algorithm to rate them on a scale: red - needs to be changed immediately, yellow - consider updating password, green - your info is safe and secure. Our goal is to help our users rest easy knowing their accounts are secure. 
 
-Step 3 git init
-Step 4 git add -A
-Step 5 git commit -m 'Init repo'
-Step 6 Make a git repo
-Step 7 copy the git remote add origin line and paste it to your repo
-Step 8 git push -u origin master
-Step 9 Add your team members to the repo
-Step 10 protect the master branch just in case people merge changes to master
+There is also passord generator desing to make it easier for our users to feel secure with their many online accounts
 
-
-Proj 2 Requirements
-Must use a Node and Express web server
-Must be backed by a SQL Database
-Must be deployed to Heroku with data
-Must have a polished UI
-Must have a folder structure that meets the MVC paradigm
-Must Use React
-Must meet good quality coding standards (indentation etc)
-Must have GET and POST request for creating and getting data
-Must protect API keys in Node with environmental Variables
-
-
-You need to create a .env file that has a JWT_SECRET.
-The content of the file should look like the code below.
-
-JWT_SECRET=asdyuofgayudagdyuadsgar837rgsdada
- DUE DATE ON  NOVEMBER 14
-
+Website: https://passify-proj2.herokuapp.com/
